@@ -1,0 +1,29 @@
+{
+    "manifest_version": 2,
+    "name": "Email Combination Search",
+    "short_name": "Search",
+    "description": "Searches for the selected text in Google",
+    "version": "0.0.1",
+    "minimum_chrome_version": "38",
+    "permissions": [
+        "contextMenus",
+        "tabs"
+    ],
+    "background": {
+        "page": "background.html"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "<all_urls>"
+            ],
+            "js": [
+                "popup.js"
+            ]
+        }
+    ],
+    "browser_action": {
+        "default_popup": "background.html",
+        "default_title": "Bear"
+    }
+}
