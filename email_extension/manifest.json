@@ -7,7 +7,8 @@
     "minimum_chrome_version": "38",
     "permissions": [
         "contextMenus",
-        "tabs"
+        "tabs",
+        "notifications"
     ],
     "background": {
         "page": "background.html"

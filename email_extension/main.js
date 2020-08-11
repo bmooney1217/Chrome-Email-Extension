@@ -1,7 +1,11 @@
+//import swal from 'sweetalert';
+
+
 var query = ''
 var emailArray = []
 let link = ''
 var hostname = ''
+
 
 //Searches each possible email combination in new tab
 searchGoogle = function (word) {
@@ -17,7 +21,7 @@ searchGoogle = function (word) {
 
                 for (let i = 0; i < emailArray.length; ++i) {
                     fullEmail = emailArray[i] + '@' + hostname
-                    chrome.tabs.create({ url: "https://www.google.com/search?q=" + "'" + fullEmail + "'" + "&rlz=1C1SQJL_enUS858US864&oq=hey&aqs=chrome.0.69i59l2j0j46j0j46l2j0.402j1j9&sourceid=chrome&ie=UTF-8" });
+                    chrome.tabs.create({ url: "https://www.google.com/search?q=" + '"' + fullEmail + '"' + "&rlz=1C1SQJL_enUS858US864&oq=hey&aqs=chrome.0.69i59l2j0j46j0j46l2j0.402j1j9&sourceid=chrome&ie=UTF-8" });
 
                     /* chrome.runtime.onMessage.addListener(function (response, send, sendResponse) {
                         //alert(response)
@@ -30,13 +34,33 @@ searchGoogle = function (word) {
 
                     }) */
 
-                    //****Deletes tabs once looped through email Array****
 
                     /* chrome.tabs.query({}, function (tabs) {
                         chrome.tabs.remove(tabs[tabs.length - 1].id);
 
                     }); */
-                    alert("Searched for:  " + fullEmail)
+                    //alert("Searched for:  " + fullEmail)
+
+                    var proceed = confirm(
+                        "Searched for:  " + fullEmail + " \n" +
+                        ' - Press OK to Search a diferent email combinaion' + "\n" +
+                        ' - Press Cancel if you found the email address'
+                    );
+                    if (!proceed) {
+
+                        break
+
+                    }
+                    else {
+                        chrome.tabs.query({}, function (tabs) {
+                            chrome.tabs.remove(tabs[tabs.length - 1].id);
+
+                        });
+
+
+                    }
+
+
                 }
             }
         );
@@ -79,7 +103,7 @@ setEmailFormats = function (word) {
         array.push(lastLetterDotFirstLetter)
 
 
-        /* array.push(lastNameFistName);
+        array.push(lastNameFistName);
         array.push(lastLetterFirstName);
         array.push(lastLetterDotFirstName);
         array.push(firstLetterLastLetter);
@@ -92,7 +116,7 @@ setEmailFormats = function (word) {
         array.push(lastNameDotFistLetter);
         array.push(firstNameDotLastLetter);
         array.push(firstNameDotLastName);
-        array.push(lastNameDotFirstName); */
+        array.push(lastNameDotFirstName);
 
         return array
     }
@@ -118,6 +142,18 @@ setHostNameFormat = function (hostname) {
 
 
 }
+
+function show() {
+    notification = new Notification("Test", {
+        body: 'click the notification to open example.com, or click to the x to close'
+    });
+    notification.onclick = function () {
+        window.open('http://example.com');
+        window.focus();
+    };
+};
+
+
 
 // Creates Context Menu
 chrome.contextMenus.create({
