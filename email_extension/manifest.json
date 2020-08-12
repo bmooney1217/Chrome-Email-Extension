@@ -1,15 +1,18 @@
 {
     "manifest_version": 2,
-    "name": "Email Combination Search",
+    "name": "Email Search",
     "short_name": "Search",
     "description": "Searches for the selected text in Google",
-    "version": "0.0.1",
+    "version": "0.0.0.1",
     "minimum_chrome_version": "38",
     "permissions": [
         "contextMenus",
         "tabs",
         "notifications"
     ],
+    "icons": {
+        "128": "EmailSearch.png"
+    },
     "background": {
         "page": "background.html"
     },
@@ -19,7 +22,7 @@
                 "<all_urls>"
             ],
             "js": [
-                "popup.js"
+                "main.js"
             ]
         }
     ],
