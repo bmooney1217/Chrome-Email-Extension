@@ -62,6 +62,7 @@ searchGoogle = function (word) {
 
 
                 }
+                alert('All email combinations have been searched.')
             }
         );
 
@@ -78,45 +79,47 @@ setEmailFormats = function (word) {
     if (nameLength === 2) {
         query = query.toLowerCase()
 
-        var firstNameLastName = query.split(" ").join("")
         var firstName = query.split(' ')[0];
         var lastName = query.split(' ')[1];
+
+        var firstNameLastName = query.split(" ").join("")
         var firstNameDotLastName = firstName + '.' + lastName;
-        var firstLetterLastName = query.split(' ')[0].charAt(0) + lastName
-        var firstNameLastLetter = firstName + query.split(' ')[1].charAt(0)
-        var firstLetterDotLastName = query.split(' ')[0].charAt(0) + '.' + lastName
-        var firstNameDotLastLetter = firstName + '.' + query.split(' ')[1].charAt(0)
-        var lastNameFistName = lastName + firstName;
         var lastNameDotFirstName = lastName + '.' + firstName
-        var lastNameFistLetter = lastName + query.split(' ')[0].charAt(0)
-        var lastNameDotFistLetter = lastName + '.' + query.split(' ')[0].charAt(0)
+
+        var lastNameFirstName = lastName + firstName;
         var lastLetterFirstName = query.split(' ')[1].charAt(0) + firstName;
         var lastLetterDotFirstName = query.split(' ')[1].charAt(0) + '.' + firstName
+        var lastNameFirstLetter = lastName + query.split(' ')[0].charAt(0)
+        var firstLetterDotLastName = query.split(' ')[0].charAt(0) + '.' + lastName
+        var lastNameDotFirstLetter = lastName + '.' + query.split(' ')[0].charAt(0)
+        var firstNameDotLastLetter = firstName + '.' + query.split(' ')[1].charAt(0)
+        var firstLetterLastName = query.split(' ')[0].charAt(0) + lastName
+        var firstNameLastLetter = firstName + query.split(' ')[1].charAt(0)
         var firstLetterLastLetter = query.split(' ')[0].charAt(0) + query.split(' ')[1].charAt(0)
         var firstLetterDotLastLetter = query.split(' ')[0].charAt(0) + '.' + query.split(' ')[1].charAt(0)
-        var lastLetterFirstLetter = query.split(' ')[1].charAt(0) + query.split(' ')[0].charAt(0);
         var lastLetterDotFirstLetter = query.split(' ')[1].charAt(0) + '.' + query.split(' ')[0].charAt(0)
+        var lastLetterFirstLetter = query.split(' ')[1].charAt(0) + query.split(' ')[0].charAt(0);
+
+
 
         array.push(firstNameLastName);
-        array.push(firstLetterLastName);
-        array.push(firstNameLastLetter);
-        array.push(lastLetterDotFirstLetter)
-
-
-        array.push(lastNameFistName);
-        array.push(lastLetterFirstName);
-        array.push(lastLetterDotFirstName);
-        array.push(firstLetterLastLetter);
-        array.push(firstLetterDotLastLetter);
-        array.push(lastLetterFirstLetter);
-        array.push(firstName);
-        array.push(lastName);
-        array.push(lastNameFistLetter);
-        array.push(firstLetterDotLastName);
-        array.push(lastNameDotFistLetter);
-        array.push(firstNameDotLastLetter);
         array.push(firstNameDotLastName);
         array.push(lastNameDotFirstName);
+        array.push(firstName);
+        array.push(lastName);
+        array.push(lastNameFirstName);
+        array.push(lastLetterFirstName);
+        array.push(lastLetterDotFirstName);
+        array.push(lastNameFirstLetter);
+        array.push(firstLetterDotLastName);
+        array.push(lastNameDotFirstLetter);
+        array.push(firstNameDotLastLetter);
+        array.push(firstLetterLastName);
+        array.push(firstNameLastLetter);
+        array.push(firstLetterLastLetter);
+        array.push(firstLetterDotLastLetter);
+        array.push(lastLetterDotFirstLetter)
+        array.push(lastLetterFirstLetter);
 
         return array
     }
